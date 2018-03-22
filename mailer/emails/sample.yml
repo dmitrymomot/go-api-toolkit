@@ -1,0 +1,15 @@
+
+Subject: "Confirm Email on TheApp"
+Preheader: "Please, confirm your email address."
+Intro:
+    - "Have we got the right email address to reach you on? To confirm that you can get our emails, just click the button below."
+Outro:
+    - "If you don’t know why you got this email, please tell us straight away so we can fix this for you."
+    - "Need help, or have questions? Just reply to this email, we'd love to help."
+Button:
+    title: "Confirm My Email"
+    link: "https://theapp.com/confirm-email?email={email}&confirmation_code={confirmation_code}"
+Footer:
+    - "TheApp LLC, San Francisco, CA."
+UnsubscribeLink: "https://theapp.com/unsubscribe?email={email}&confirmation_code={confirmation_code}"
+RemoveEmailLink: "https://theapp.com/remove-email?email={email}&confirmation_code={confirmation_code}" # in case if the mail was sent to email, which is owned by a not registered person, you can just remove this property if don't have any idea how to use it:)

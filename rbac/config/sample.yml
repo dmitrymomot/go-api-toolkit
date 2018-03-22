@@ -1,0 +1,27 @@
+# Roles list with permissions
+roles:
+    admin:
+        - admin     # admin permissions
+    manager:
+        - manager   # manager permissions
+    customer:
+        - customer  # customer permissions
+        - user      # any registered user permissions
+    executor:
+        - executor  # executor permissions
+        - user      # any registered user permissions
+    guest:
+        - guest     # only not signed in users
+
+# Roles inheritance
+inheritance:
+    admin: # admin inherits all manager permissions and him inheritances
+        - manager
+    manager:  # manager inherits all customer and executor permissions
+        - customer
+        - executor
+
+# roles which are available to free usage, for example, to sign up
+available:
+    - customer
+    - executor
