@@ -7,7 +7,7 @@ import (
 
 // Setup mailer
 func Setup(config Configer) Mailer {
-	box := packr.NewBox("./templates")
+	box := packr.NewBox("./")
 	client := gomail.NewPlainDialer(
 		config.Host(),
 		config.Port(),

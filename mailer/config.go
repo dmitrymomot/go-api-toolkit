@@ -35,7 +35,7 @@ type Config struct {
 		Password string
 	}
 
-	Template string `default:"default.html"`
+	Template string `default:"default.tpl"`
 }
 
 // SenderName is a getter

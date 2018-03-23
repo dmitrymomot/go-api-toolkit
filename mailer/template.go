@@ -10,8 +10,8 @@ import (
 
 // Paths to default html templates
 const (
-	defaultTemplate = "default.html"
-	mailgunTemplate = "mailgun.html" // in this template unsubscribe link is mailgun placeholder
+	defaultTemplate = "default.tpl"
+	mailgunTemplate = "mailgun.tpl" // in this template unsubscribe link is mailgun placeholder
 )
 
 type templates map[string]string
