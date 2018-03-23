@@ -1,5 +1,10 @@
 package mailer
 
+import (
+	"io/ioutil"
+	"log"
+)
+
 // Configer is the mailer config interface
 type Configer interface {
 	SenderEmail() string
@@ -35,7 +40,7 @@ type Config struct {
 		Password string
 	}
 
-	Template string `default:"default.tpl"`
+	Template string
 }
 
 // SenderName is a getter
@@ -91,11 +96,12 @@ func (c *Config) Password() string {
 // BaseTemplate is just a getter
 func (c *Config) BaseTemplate() string {
 	if c.Template == "" {
-		c.Template = defaultTemplates.get(defaultTemplate)
-	} else {
-		if tpl := defaultTemplates.get(c.Template); tpl != "" {
-			c.Template = tpl
-		}
+		return getDefaultTemplateHTML()
 	}
-	return c.Template
+	str, err := ioutil.ReadFile(c.Template)
+	if err != nil {
+		log.Println(err)
+		return getDefaultTemplateHTML()
+	}
+	return string(str)
 }
