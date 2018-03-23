@@ -1,7 +1,6 @@
 package mailer
 
 import (
-	"github.com/gobuffalo/packr"
 	"github.com/jinzhu/configor"
 	gomail "gopkg.in/gomail.v2"
 )
@@ -10,14 +9,12 @@ import (
 type Mailer interface {
 	Send(recipient Recipienter, mailTplPath string, confCode string) error
 	config() Configer
-	box() packr.Box
 	client() *gomail.Dialer
 }
 
 type mail struct {
 	c  Configer
 	cl *gomail.Dialer
-	b  packr.Box
 }
 
 // Send sends email
@@ -57,11 +54,6 @@ func (m *mail) config() Configer {
 // returns mailer client
 func (m *mail) client() *gomail.Dialer {
 	return m.cl
-}
-
-// returns mailer storage box
-func (m *mail) box() packr.Box {
-	return m.b
 }
 
 // Recipienter recipient interface

@@ -38,10 +38,7 @@ type buttonTpl struct {
 }
 
 func parseTemplate(mail Mailer, mailTpl *mailTemplate) (string, error) {
-	baseTpl, err := mail.box().MustString(mail.config().BaseTemplate())
-	if err != nil {
-		return "", err
-	}
+	baseTpl := mail.config().BaseTemplate()
 
 	if mailTpl.Product.Name == "" {
 		mailTpl.Product.Name = mail.config().ProductName()
@@ -52,7 +49,7 @@ func parseTemplate(mail Mailer, mailTpl *mailTemplate) (string, error) {
 
 	t := template.Must(template.New("").Funcs(sprig.FuncMap()).Parse(baseTpl))
 	var buffer bytes.Buffer
-	if err = t.Execute(&buffer, mailTpl); err != nil {
+	if err := t.Execute(&buffer, mailTpl); err != nil {
 		return "", err
 	}
 
